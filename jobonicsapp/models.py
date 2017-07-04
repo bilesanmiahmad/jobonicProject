@@ -1,17 +1,9 @@
 from django.db import models
 from jobonicusers.models import JobonicUser
+# from jobonicscompany.models import Entity
 from django.contrib.auth.admin import UserAdmin
 
 # Create your models here.
-
-
-class Country(models.Model):
-    name = models.CharField(max_length=20)
-    created_by = models.ForeignKey(JobonicUser, related_name='countries', on_delete=models.CASCADE)
-    date_created = models.DateField(auto_now=True)
-
-    def __str__(self):
-        return self.name
 
 
 class EntitySize(models.Model):
@@ -23,26 +15,13 @@ class EntitySize(models.Model):
         return self.size_info
 
 
-class Entity(models.Model):
-    name = models.CharField(max_length=50)
-    logo = models.CharField(max_length=200)
-    primary_industry = models.CharField(max_length=50)
-    num_of_employees = models.IntegerField()
-    about_company = models.TextField()
-    facebook = models.CharField(max_length=50)
-    linkedIn = models.CharField(max_length=50)
-    twitter = models.CharField(max_length=50)
-    url = models.CharField(max_length=50)
-    date_established = models.DateField()
-    organisation_type = models.CharField(max_length=20)
-    tags = models.CharField(max_length=200)
-    entity_admin = models.ForeignKey(JobonicUser)
-    location = models.CharField(max_length=30)
-    company_size = models.ForeignKey(EntitySize)
-    country = models.ForeignKey(Country)
-    company = models.ForeignKey('self', on_delete=models.CASCADE)
-    date_created = models.DateField(auto_now_add=True)
-    date_modified = models.DateField(auto_now=True)
+class Country(models.Model):
+    name = models.CharField(max_length=20)
+    created_by = models.ForeignKey(JobonicUser, related_name='countries', on_delete=models.CASCADE)
+    date_created = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Industry(models.Model):
@@ -80,6 +59,31 @@ class JobStatus(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Entity(models.Model):
+    name = models.CharField(max_length=50)
+    logo = models.URLField(max_length=200)
+    primary_industry = models.CharField(max_length=50)
+    num_of_employees = models.IntegerField()
+    about_company = models.TextField()
+    facebook = models.CharField(max_length=50)
+    linkedIn = models.CharField(max_length=50)
+    twitter = models.CharField(max_length=50)
+    url = models.CharField(max_length=50)
+    date_established = models.DateField()
+    organisation_type = models.CharField(max_length=20)
+    tags = models.CharField(max_length=200)
+    entity_admin = models.ForeignKey(JobonicUser)
+    location = models.CharField(max_length=30)
+    company_size = models.ForeignKey(EntitySize)
+    country = models.ForeignKey(Country)
+    company = models.ForeignKey('self', on_delete=models.CASCADE)
+    date_created = models.DateField(auto_now_add=True)
+    date_modified = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Job(models.Model):
@@ -124,3 +128,5 @@ class Schedule(models.Model):
     schedule_time = models.TimeField()
     date_created = models.DateField(auto_now=True)
     created_by = models.ForeignKey(JobonicUser)
+
+

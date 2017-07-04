@@ -1,0 +1,10 @@
+*.pyc
+db.sqlite3
+bin
+include
+lib
+share
+pip-selfcheck.json
+__pycache__
+local_settings.py
+

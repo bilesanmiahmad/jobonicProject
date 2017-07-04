@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, UserManager, PermissionsMixin
 from django.utils.translation import ugettext_lazy as _
 from django.core.mail import send_mail
+from django.utils.timezone import now
 # Create your models here.
 
 
@@ -34,23 +35,14 @@ class JobonicUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=40)
     middle_name = models.CharField(max_length=20, blank=True)
     last_name = models.CharField(max_length=20)
-    maiden_name = models.CharField(max_length=20, blank='true')
-    gender = models.CharField(max_length=10, choices=[('M', 'Male'), ('F', 'Female')], default='M')
-    birth_date = models.DateField(blank=True, null=True)
-    user_type = models.CharField(max_length=15, choices=[('Admin', 'Administrator'), ('Recruit', 'Recruiter'), ('seeker', 'Job Seeker')], default='seeker')
     email = models.EmailField(unique=True)
-    phone = models.CharField(max_length=11, blank=True)
-    facebook = models.CharField(max_length=30, blank=True)
-    twitter = models.CharField(max_length=30, blank=True)
-    linkedIn = models.CharField(max_length=30, blank=True)
-    score = models.IntegerField(blank=True, null=True)
     date_created = models.DateField(auto_now_add=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateField(auto_now=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'middle_name']
 
     objects = JobonicUserManager()
 
@@ -74,6 +66,19 @@ class JobonicUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.first_name + " " + self.last_name
+
+
+class UserProfile(models.Model):
+    user = models.ForeignKey('JobonicUser', on_delete=models.CASCADE)
+    gender = models.CharField(max_length=10, choices=[('M', 'Male'), ('F', 'Female')], default='M')
+    birth_date = models.DateField(blank=True, null=True)
+    user_type = models.CharField(max_length=15, choices=[('Admin', 'Administrator'), ('Recruit', 'Recruiter'), ('seeker', 'Job Seeker')], default='seeker')
+    phone = models.CharField(max_length=11, blank=True)
+    facebook = models.CharField(max_length=30, blank=True)
+    twitter = models.CharField(max_length=30, blank=True)
+    linkedIn = models.CharField(max_length=30, blank=True)
+    score = models.IntegerField(blank=True, null=True)
+    created_on = models.DateTimeField(default=now())
 
 
 

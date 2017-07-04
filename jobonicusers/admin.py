@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import JobonicUser
+from .models import JobonicUser, UserProfile
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -27,3 +27,4 @@ class JobonicsUserAdmin(UserAdmin):
     filter_horizontal = []
 
 admin.site.register(JobonicUser, JobonicsUserAdmin)
+admin.site.register(UserProfile)
