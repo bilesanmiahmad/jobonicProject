@@ -16,11 +16,21 @@ from rest_framework.permissions import IsAuthenticated
 class JobonicUserViewSet(viewsets.ModelViewSet):
     """Handles creating, reading and updating users"""
     serializer_class = serializers.JobonicUserSerializer
-    queryset = models.JobonicUser.objects.all()
+    queryset = models.JobonicUser.objects.filter(user_type="Recruit")
     authentication_classes = (TokenAuthentication,)
     permission_classes = (permissions.UpdateBasicProfile,)
     search_fields = ('first_name', 'last_name', 'email')
-    filter_backends = (filters.SearchFilter, )
+    filter_backends = (filters.SearchFilter,)
+
+
+class JobonicJobberViewSet(viewsets.ModelViewSet):
+    """Handles creating, reading and updating users"""
+    serializer_class = serializers.JobonicJobUserSerializer
+    queryset = models.JobonicUser.objects.filter(user_type="seeker")
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (permissions.UpdateBasicProfile,)
+    search_fields = ('first_name', 'last_name', 'email')
+    filter_backends = (filters.SearchFilter,)
 
 
 class LoginViewSet(viewsets.ViewSet):

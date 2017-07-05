@@ -36,6 +36,7 @@ class JobonicUser(AbstractBaseUser, PermissionsMixin):
     middle_name = models.CharField(max_length=20, blank=True)
     last_name = models.CharField(max_length=20)
     email = models.EmailField(unique=True)
+    user_type = models.CharField(max_length=15, choices=[('Admin', 'Administrator'), ('Recruit', 'Recruiter'), ('seeker', 'Job Seeker')], default='seeker')
     date_created = models.DateField(auto_now_add=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -78,7 +79,7 @@ class UserProfile(models.Model):
     twitter = models.CharField(max_length=30, blank=True)
     linkedIn = models.CharField(max_length=30, blank=True)
     score = models.IntegerField(blank=True, null=True)
-    created_on = models.DateTimeField(default=now())
+    created_on = models.DateTimeField(auto_now_add=True)
 
 
 
