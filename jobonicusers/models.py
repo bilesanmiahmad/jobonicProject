@@ -70,7 +70,7 @@ class JobonicUser(AbstractBaseUser, PermissionsMixin):
 
 
 class UserProfile(models.Model):
-    user = models.ForeignKey('JobonicUser', on_delete=models.CASCADE)
+    user = models.OneToOneField('JobonicUser', on_delete=models.CASCADE)
     gender = models.CharField(max_length=10, choices=[('M', 'Male'), ('F', 'Female')], default='M')
     birth_date = models.DateField(blank=True, null=True)
     user_type = models.CharField(max_length=15, choices=[('Admin', 'Administrator'), ('Recruit', 'Recruiter'), ('seeker', 'Job Seeker')], default='seeker')
