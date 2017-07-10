@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10d0b2fb-076c-4542-9edf-b6e98d81ffa8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.env" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonics/local_settings.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicsapp/migrations/0002_auto_20170629_1629.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicsapp/migrations/0003_auto_20170703_1131.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicusers/migrations/0002_auto_20170629_1636.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicusers/migrations/0003_auto_20170703_1131.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicusers/migrations/0004_userprofile_created_on.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicusers/migrations/0005_auto_20170705_0005.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicusers/migrations/0006_auto_20170706_0939.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/latest.dump" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicEntity/admin.py" afterPath="$PROJECT_DIR$/jobonicEntity/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicEntity/serializers.py" afterPath="$PROJECT_DIR$/jobonicEntity/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicEntity/urls.py" afterPath="$PROJECT_DIR$/jobonicEntity/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicEntity/views.py" afterPath="$PROJECT_DIR$/jobonicEntity/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonics/settings.py" afterPath="$PROJECT_DIR$/jobonics/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicsapp/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/jobonicsapp/migrations/0001_initial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicusers/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/jobonicusers/migrations/0001_initial.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -57,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jobonics/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="828">
-              <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+            <state relative-caret-position="198">
+              <caret line="28" column="19" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
               <folding>
                 <element signature="e#312#321#0" expanded="true" />
               </folding>
@@ -72,14 +53,14 @@
       <file leaf-file-name=".env" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="36">
+              <caret line="2" column="62" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="62" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jobonicEntity/admin.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
@@ -194,9 +175,9 @@
         <option value="$PROJECT_DIR$/jobonicEntity/views.py" />
         <option value="$PROJECT_DIR$/jobonicEntity/urls.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/jobonics/settings.py" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/jobonicEntity/admin.py" />
+        <option value="$PROJECT_DIR$/jobonics/settings.py" />
       </list>
     </option>
   </component>
@@ -798,16 +779,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jobonics/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-          <folding>
-            <element signature="e#312#321#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jobonicsapp/migrations/0002_auto_20170710_2031.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -820,14 +791,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -848,6 +811,24 @@
           <caret line="5" column="20" lean-forward="false" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="62" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jobonics/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="28" column="19" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+          <folding>
+            <element signature="e#312#321#0" expanded="true" />
           </folding>
         </state>
       </provider>
