@@ -4,4 +4,6 @@ from . import views
 
 
 router = DefaultRouter()
+router.register('entity', views.EntityViewSet)
+router.register('profile', views.EntityProfileViewSet)
 urlpatterns = [url(r'', include(router.urls))]
