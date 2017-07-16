@@ -1,5 +1,5 @@
-from .models import Industry, Profession, JobStatus, JobType, Country, ApplicationStage, EntitySize
-from .serializers import IndustrySerializer, ProfessionSerializer, JobStatusSerializer, JobTypeSerializer, UserSerializer, CountrySerializer, ApplicationStageSerializer, EntitySizeSerializer
+from .models import Industry, Country, ApplicationStage, EntitySize, EducationLevel, CareerLevel, Profession, JobType, JobStatus
+from .serializers import IndustrySerializer, ProfessionSerializer, JobStatusSerializer, JobTypeSerializer, UserSerializer, CountrySerializer, ApplicationStageSerializer, EntitySizeSerializer, EducationLevelSerializer, CareerLevelSerializer
 from rest_framework import generics, permissions, viewsets, filters
 from jobonicusers.models import JobonicUser as User
 
@@ -70,6 +70,26 @@ class ApplicationStageViewSet(viewsets.ModelViewSet):
     """Create, read, update, delete Application stages"""
     queryset = ApplicationStage.objects.all()
     serializer_class = ApplicationStageSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
+
+
+class EducationLevelViewSet(viewsets.ModelViewSet):
+    """Create, read, update, delete Education Levels"""
+    queryset = EducationLevel.objects.all()
+    serializer_class = EducationLevelSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
+
+
+class CareerLevelViewSet(viewsets.ModelViewSet):
+    """Create, read, update, delete Career Levels"""
+    queryset = CareerLevel.objects.all()
+    serializer_class = CareerLevelSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def perform_create(self, serializer):

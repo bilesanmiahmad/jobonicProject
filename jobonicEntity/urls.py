@@ -6,4 +6,10 @@ from . import views
 router = DefaultRouter()
 router.register('entity', views.EntityViewSet)
 router.register('profile', views.EntityProfileViewSet)
-urlpatterns = [url(r'', include(router.urls))]
+router.register('comp', views.CompanySignupViewSet, base_name='comp')
+# router.register('test', views.TestCompanyViewSet, base_name='test')
+urlpatterns = [
+    url(r'', include(router.urls)),
+    url(r'^signup/$', views.sign_up)
+
+               ]

@@ -18,7 +18,7 @@ class EntitySize(models.Model):
 
 
 class Country(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=30)
     created_by = models.ForeignKey(JobonicUser, related_name='countries', on_delete=models.CASCADE)
     date_created = models.DateField(auto_now=True)
 
@@ -30,7 +30,7 @@ class Country(models.Model):
 
 
 class Industry(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
     date_created = models.DateField(auto_now=True)
     created_by = models.ForeignKey(JobonicUser, related_name='industries', on_delete=models.CASCADE)
 
@@ -41,16 +41,17 @@ class Industry(models.Model):
         return self.name
 
 
-class Profession(models.Model):
-    name = models.CharField(max_length=20)
+class ApplicationStage(models.Model):
+    status = models.CharField(max_length=20)
+    rank = models.IntegerField()
     date_created = models.DateField(auto_now=True)
-    created_by = models.ForeignKey(JobonicUser, related_name='professions', on_delete=models.CASCADE)
+    created_by = models.ForeignKey(JobonicUser, related_name='app_stages', on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name_plural = 'Professions'
+        verbose_name_plural = 'Application Stages'
 
     def __str__(self):
-        return self.name
+        return self.status
 
 
 class JobType(models.Model):
@@ -78,43 +79,21 @@ class JobStatus(models.Model):
         return self.title
 
 
-class Job(models.Model):
-    title = models.CharField(max_length=40)
-    summary = models.TextField()
-    description = models.TextField()
-    entity = models.ForeignKey('jobonicEntity.Entity')
-    industry = models.ForeignKey(Industry)
-    creator = models.ForeignKey(JobonicUser)
-    job_type = models.ForeignKey(JobType)
-    profession = models.ForeignKey(Profession)
-    min_qualification = models.CharField(max_length=100)
-    min_experience = models.CharField(max_length=100)
-    deadline_date = models.DateField()
-    score = models.IntegerField()
-    tags = models.CharField(max_length=100)
+class Profession(models.Model):
+    name = models.CharField(max_length=50)
     date_created = models.DateField(auto_now=True)
-    job_status = models.ForeignKey(JobStatus)
+    created_by = models.ForeignKey(JobonicUser, related_name='professions', on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name_plural = 'Jobs'
-
-
-class ApplicationStage(models.Model):
-    status = models.CharField(max_length=20)
-    rank = models.IntegerField()
-    date_created = models.DateField(auto_now=True)
-    created_by = models.ForeignKey(JobonicUser, related_name='app_stages', on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name_plural = 'Application Stages'
+        verbose_name_plural = 'Professions'
 
     def __str__(self):
-        return self.status
+        return self.name
 
 
 class Application(models.Model):
     applicant = models.ForeignKey(JobonicUser)
-    job = models.ForeignKey(Job)
+    job = models.ForeignKey('jobonicjob.Job')
     status = models.ForeignKey(ApplicationStage)
     match = models.IntegerField()
     date_created = models.DateField(auto_now=True)
@@ -134,3 +113,26 @@ class Schedule(models.Model):
         verbose_name_plural = 'Schedules'
 
 
+class EducationLevel(models.Model):
+    name = models.CharField(max_length=20)
+    date_created = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(JobonicUser)
+
+    class Meta:
+        verbose_name_plural = 'Educational Levels'
+
+    def __str__(self):
+        return self.name
+
+
+class CareerLevel(models.Model):
+    name = models.CharField(max_length=30)
+    description = models.CharField(max_length=50)
+    date_created = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(JobonicUser)
+
+    class Meta:
+        verbose_name_plural = 'Career Levels'
+
+    def __str__(self):
+        return self.name

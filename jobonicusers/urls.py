@@ -5,9 +5,12 @@ from . import views
 
 
 router = DefaultRouter()
-router.register('recruiter', views.JobonicUserViewSet)
-router.register('login', views.LoginViewSet, base_name='login')
+# router.register('recruiter', views.JobonicUserViewSet)
+# router.register('login', views.LoginViewSet, base_name='login')
 router.register('profile', views.UserProfileViewSet)
 router.register('seeker', views.JobonicJobberViewSet)
 
-urlpatterns = [url(r'', include(router.urls)), ]
+urlpatterns = [
+    url(r'^login/$', views.LoginViewSet.as_view()),
+    url(r'', include(router.urls)),
+]

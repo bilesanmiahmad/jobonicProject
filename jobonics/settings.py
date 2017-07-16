@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'jobonicEntity',
     'jobonicsapp',
     'jobonicusers',
+    'jobonicjob',
 ]
 
 AUTH_USER_MODEL = 'jobonicusers.JobonicUser'

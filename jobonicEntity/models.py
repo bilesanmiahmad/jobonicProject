@@ -8,8 +8,7 @@ from jobonicusers.models import JobonicUser
 class Entity(models.Model):
     name = models.CharField(max_length=50)
     entity_admin = models.ForeignKey(JobonicUser)
-    telephone = models.CharField(max_length=15)
-    email = models.EmailField(max_length=50)
+    url = models.URLField(max_length=70)
     date_created = models.DateField(auto_now_add=True)
     date_modified = models.DateField(auto_now=True)
 

@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^api/', include('jobonicsapp.urls')),
     url(r'^api/users/', include('jobonicusers.urls')),
     url(r'^api/company/', include('jobonicEntity.urls')),
+    url(r'^api/jobs/', include('jobonicjob.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

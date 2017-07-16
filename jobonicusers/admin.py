@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 class JobonicsUserAdmin(UserAdmin):
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        (_('Personal info'), {'fields': ('first_name', 'last_name')}),
+        (_('Personal info'), {'fields': ('first_name', 'last_name', 'is_active')}),
         (_('Permissions'), {'fields': ('is_staff',)}),
         (_('Important dates'), {'fields': ('last_login', 'date_created')}),
     )
@@ -20,8 +20,8 @@ class JobonicsUserAdmin(UserAdmin):
         }),
     )
 
-    list_display = ('email', 'first_name', 'last_name', 'is_staff')
-    list_filter = ('is_staff', )
+    list_display = ('email', 'first_name', 'last_name')
+    list_filter = ()
     search_fields = ('first_name', 'last_name', 'email')
     ordering = ('email',)
     filter_horizontal = []

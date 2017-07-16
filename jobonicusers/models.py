@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, UserManager, PermissionsMixin
 from django.utils.translation import ugettext_lazy as _
 from django.core.mail import send_mail
-from django.utils.timezone import now
+
+
 # Create your models here.
 
 
@@ -17,11 +18,13 @@ class JobonicUserManager(UserManager):
     def create_user(self, email=None, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)
+        extra_fields.setdefault('is_active', False)
         return self._create_user(email, password, **extra_fields)
 
     def create_superuser(self, email, password, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('is_active', True)
 
         if extra_fields.get('is_staff') is not True:
             raise ValueError('Superuser must have is_staff=True.')
@@ -33,17 +36,17 @@ class JobonicUserManager(UserManager):
 
 class JobonicUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=40)
-    middle_name = models.CharField(max_length=20, blank=True)
     last_name = models.CharField(max_length=20)
     email = models.EmailField(unique=True)
-    user_type = models.CharField(max_length=15, choices=[('Admin', 'Administrator'), ('Recruit', 'Recruiter'), ('seeker', 'Job Seeker')], default='seeker')
-    date_created = models.DateField(auto_now_add=True)
+    phone = models.CharField(unique=True, max_length=15)
+    company = models.ForeignKey('jobonicEntity.Entity', default=None, blank=True, null=True, on_delete=models.SET_NULL)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    date_created = models.DateField(auto_now_add=True)
     date_joined = models.DateField(auto_now=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'middle_name']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone']
 
     objects = JobonicUserManager()
 
@@ -70,10 +73,11 @@ class JobonicUser(AbstractBaseUser, PermissionsMixin):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField('JobonicUser', on_delete=models.CASCADE)
+    user = models.OneToOneField(JobonicUser, on_delete=models.CASCADE)
+    middle_name = models.CharField(max_length=20, blank=True)
     gender = models.CharField(max_length=10, choices=[('M', 'Male'), ('F', 'Female')], default='M')
     birth_date = models.DateField(blank=True, null=True)
-    user_type = models.CharField(max_length=15, choices=[('Admin', 'Administrator'), ('Recruit', 'Recruiter'), ('seeker', 'Job Seeker')], default='seeker')
+    # user_type = models.CharField(max_length=15, choices=[('Admin', 'Administrator'), ('Recruit', 'Recruiter'), ('seeker', 'Job Seeker')], default='seeker')
     phone = models.CharField(max_length=11, blank=True)
     facebook = models.CharField(max_length=30, blank=True)
     twitter = models.CharField(max_length=30, blank=True)
