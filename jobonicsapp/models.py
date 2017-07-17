@@ -6,7 +6,7 @@ from django.contrib.auth.admin import UserAdmin
 
 
 class EntitySize(models.Model):
-    size_info = models.CharField(max_length=15)
+    size_info = models.CharField(max_length=30)
     created_by = models.ForeignKey(JobonicUser, related_name='entity_sizes', on_delete=models.CASCADE)
     date_created = models.DateField(auto_now=True)
 
@@ -42,7 +42,7 @@ class Industry(models.Model):
 
 
 class ApplicationStage(models.Model):
-    status = models.CharField(max_length=20)
+    status = models.CharField(max_length=30)
     rank = models.IntegerField()
     date_created = models.DateField(auto_now=True)
     created_by = models.ForeignKey(JobonicUser, related_name='app_stages', on_delete=models.CASCADE)
@@ -55,7 +55,7 @@ class ApplicationStage(models.Model):
 
 
 class JobType(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=30)
     date_created = models.DateField(auto_now=True)
     created_by = models.ForeignKey(JobonicUser, related_name='job_types', on_delete=models.CASCADE)
 
@@ -114,7 +114,7 @@ class Schedule(models.Model):
 
 
 class EducationLevel(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=30)
     date_created = models.DateTimeField(auto_now=True)
     created_by = models.ForeignKey(JobonicUser)
 
