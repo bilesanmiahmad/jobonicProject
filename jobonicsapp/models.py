@@ -136,3 +136,14 @@ class CareerLevel(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Source(models.Model):
+    name = models.CharField(max_length=30)
+    date_created = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = 'Sources'
+
+    def __str__(self):
+        return self.name
