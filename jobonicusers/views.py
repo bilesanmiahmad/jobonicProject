@@ -40,10 +40,9 @@ class JobonicJobberViewSet(viewsets.ViewSet):
         first_name = request.data['first_name']
         last_name = request.data['last_name']
         email = request.data['email']
-        phone = request.data['phone']
         password = request.data['password']
 
-        user = models.JobonicUser.objects.create_user(first_name=first_name, last_name=last_name, email=email, phone=phone, password=password)
+        user = models.JobonicUser.objects.create_user(first_name=first_name, last_name=last_name, email=email, password=password)
         user = self.serializer_class(user)
         return response.Response({
             "message": "User created successfully",
