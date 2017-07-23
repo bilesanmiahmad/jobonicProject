@@ -1,12 +1,19 @@
-from rest_framework import generics, permissions, filters, viewsets
+from rest_framework import generics, permissions, filters, viewsets, status, response
+from rest_framework.response import Response
+from rest_framework.decorators import list_route
+import sendgrid
+from rest_framework.permissions import AllowAny
+import requests
 
 from django.shortcuts import render
 from django.http.response import HttpResponse
 
 from jobonicEntity.models import Entity, EntityProfile
 from jobonicusers.models import JobonicUser as JobUser, JobonicUser
-from jobonicEntity.serializers import EntityProfileSerializer, EntitySerializer, EntityUserSerializer
+from jobonicEntity.serializers import EntityProfileSerializer, EntitySerializer
 from jobonicEntity.forms import LoginForm
+from keys import *
+
 
 # Create your views here.
 
@@ -15,7 +22,7 @@ class EntityViewSet(viewsets.ModelViewSet):
     """Create, Read, Update and Delete entities"""
     queryset = Entity.objects.all()
     serializer_class = EntitySerializer
-    # permission_classes = permissions.IsAuthenticated
+    # permission_classes = permissions.AllowAny
 
     # def list(self, request, *args, **kwargs):
     #     queryset = self.Entity.objects.all()
@@ -27,12 +34,23 @@ class EntityProfileViewSet(viewsets.ModelViewSet):
     """Create, Read, Update and Delete entity profiles"""
     queryset = EntityProfile.objects.all()
     serializer_class = EntityProfileSerializer
-    # permission_classes = permissions.IsAuthenticatedOrReadOnly
+    permission_classes = permissions.AllowAny
+
+
+# class CompanyProfileViewSet(viewsets.ViewSet):
+#     serializer_class = EntityProfileSerializer
+#
+#     @list_route(methods=('post',), url_path="create-profile")
+#     def create_profile(self, request):
 
 
 class CompanySignupViewSet(viewsets.ViewSet):
+    serializer_class = EntitySerializer
+    # Create a new company profile -- https://jobonicplatform.com/api/company/comp/create
 
-    def create(self, request):
+    @list_route(methods=('post',), url_path="create-account", permission_classes=[AllowAny])
+    def create_account(self, request):
+        print("Create")
         first_name = request.data['first_name']
         last_name = request.data['last_name']
         email = request.data['email']
@@ -41,12 +59,17 @@ class CompanySignupViewSet(viewsets.ViewSet):
         website = request.data['website']
         password = request.data['password']
 
-        user = JobUser.objects.create_user(email=email, password=password, first_name=first_name, last_name=last_name, phone=phone)
+        user = JobUser.objects.create_user(email=email, password=password, first_name=first_name, last_name=last_name,
+                                           phone=phone)
         entity = Entity.objects.create(name=company, url=website, entity_admin=user)
         user.company = entity
         user.save()
-
-        return HttpResponse("Thanks")
+        user = self.serializer_class(entity)
+        return response.Response({
+            "message": "Company created successfully",
+            "status": status.HTTP_201_CREATED,
+            "payload": user.data
+        })
 
 
 def sign_up(request):
@@ -61,11 +84,11 @@ def sign_up(request):
             website = form.cleaned_data['website']
             password = form.cleaned_data['password']
 
-            user = JobUser.objects.create_user(email=email, password=password, first_name=first_name, last_name=last_name, phone=phone)
+            user = JobUser.objects.create_user(email=email, password=password, first_name=first_name,
+                                               last_name=last_name, phone=phone)
             Entity.objects.create(name=company, url=website, entity_admin=user)
 
             return HttpResponse("Thanks")
     else:
         form = LoginForm()
     return render(request, 'signup.html', {'form': form})
-

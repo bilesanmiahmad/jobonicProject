@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, UserManager, PermissionsMixin
 from django.utils.translation import ugettext_lazy as _
@@ -38,15 +39,16 @@ class JobonicUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=40)
     last_name = models.CharField(max_length=20)
     email = models.EmailField(unique=True)
-    phone = models.CharField(unique=True, max_length=15)
     company = models.ForeignKey('jobonicEntity.Entity', default=None, blank=True, null=True, on_delete=models.SET_NULL)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    uuid_info = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    is_activated = models.BooleanField(default=False)
     date_created = models.DateField(auto_now_add=True)
     date_joined = models.DateField(auto_now=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone']
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     objects = JobonicUserManager()
 
@@ -76,12 +78,13 @@ class UserProfile(models.Model):
     user = models.OneToOneField(JobonicUser, on_delete=models.CASCADE)
     middle_name = models.CharField(max_length=20, blank=True)
     gender = models.CharField(max_length=10, choices=[('M', 'Male'), ('F', 'Female')], default='M')
+    phone = models.CharField(unique=True, max_length=15)
     birth_date = models.DateField(blank=True, null=True)
     # user_type = models.CharField(max_length=15, choices=[('Admin', 'Administrator'), ('Recruit', 'Recruiter'), ('seeker', 'Job Seeker')], default='seeker')
     phone = models.CharField(max_length=11, blank=True)
-    facebook = models.CharField(max_length=30, blank=True)
-    twitter = models.CharField(max_length=30, blank=True)
-    linkedIn = models.CharField(max_length=30, blank=True)
+    facebook = models.CharField(max_length=70, blank=True)
+    twitter = models.CharField(max_length=70, blank=True)
+    linkedIn = models.CharField(max_length=70, blank=True)
     score = models.IntegerField(blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
 

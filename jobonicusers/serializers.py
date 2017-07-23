@@ -57,21 +57,22 @@ class LoginSerializer(serializers.Serializer):
 class JobonicJobUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = JobonicUser
-        fields = ('id', 'first_name', 'last_name', 'email', 'password',
+        fields = ('id', 'first_name', 'last_name', 'email', 'password', 'is_activated',
                   'date_created', 'date_joined', 'is_active', 'is_staff')
-        extra_kwargs = {'password': {'write_only': True}, 'is_active': {'read_only': True}, 'is_staff': {'read_only': True}}
+        extra_kwargs = {'password': {'write_only': True}, 'is_active': {'read_only': True}, 'is_staff': {'read_only': True},
+                        'uuid_info': {'read_only': True}, 'is_activated': {'read_only': True}}
 
-    def create(self, validated_data):
-        user = JobonicUser(
-            first_name=validated_data['first_name'],
-            last_name=validated_data['last_name'],
-            email=validated_data['email'],
-        )
-
-        user.set_password(validated_data['password'])
-        user.save()
-
-        return user
+    # def create(self, validated_data):
+    #     user = JobonicUser(
+    #         first_name=validated_data['first_name'],
+    #         last_name=validated_data['last_name'],
+    #         email=validated_data['email'],
+    #     )
+    #
+    #     user.set_password(validated_data['password'])
+    #     user.save()
+    #
+    #     return user
 
 
 class UserProfileSerializer(serializers.ModelSerializer):

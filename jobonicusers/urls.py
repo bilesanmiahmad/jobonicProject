@@ -8,9 +8,10 @@ router = DefaultRouter()
 # router.register('recruiter', views.JobonicUserViewSet)
 # router.register('login', views.LoginViewSet, base_name='login')
 router.register('profile', views.UserProfileViewSet)
-router.register('seeker', views.JobonicJobberViewSet)
+router.register('seeker', views.JobonicJobberViewSet, base_name="seeker")
 
 urlpatterns = [
+    url(r'^activate/', views.UserActivation),
     url(r'^login/$', views.LoginViewSet.as_view()),
     url(r'', include(router.urls)),
 ]
