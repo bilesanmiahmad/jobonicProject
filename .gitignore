@@ -8,3 +8,4 @@ pip-selfcheck.json
 __pycache__
 local_settings.py
 .env
+keys.py
