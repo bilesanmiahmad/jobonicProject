@@ -2,44 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10d0b2fb-076c-4542-9edf-b6e98d81ffa8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jobonicEntity/permissions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jobonicusers/signals.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/keys.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicEntity/migrations/0002_auto_20170714_1519.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicjob/migrations/0002_auto_20170714_1519.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicjob/migrations/0003_auto_20170715_1452.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicjob/migrations/0004_auto_20170715_1454.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicsapp/migrations/0002_auto_20170714_1519.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicsapp/migrations/0003_auto_20170716_1107.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicsapp/migrations/0004_auto_20170717_1315.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicsapp/migrations/0005_source.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicusers/migrations/0002_jobonicuser_is_staff.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicusers/migrations/0003_jobonicuser_is_active.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicusers/migrations/0004_remove_jobonicuser_company.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicusers/migrations/0005_auto_20170716_1102.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicusers/migrations/0006_auto_20170716_1156.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jobonicusers/migrations/0007_auto_20170716_1158.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.env" afterPath="$PROJECT_DIR$/.env" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicEntity/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/jobonicEntity/migrations/0001_initial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicEntity/migrations/0003_entity_entity_admin.py" afterPath="$PROJECT_DIR$/jobonicEntity/migrations/0003_entity_entity_admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicEntity/models.py" afterPath="$PROJECT_DIR$/jobonicEntity/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicEntity/serializers.py" afterPath="$PROJECT_DIR$/jobonicEntity/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicEntity/urls.py" afterPath="$PROJECT_DIR$/jobonicEntity/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicEntity/views.py" afterPath="$PROJECT_DIR$/jobonicEntity/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicjob/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/jobonicjob/migrations/0001_initial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicjob/serializers.py" afterPath="$PROJECT_DIR$/jobonicjob/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicjob/views.py" afterPath="$PROJECT_DIR$/jobonicjob/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicsapp/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/jobonicsapp/migrations/0001_initial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicusers/__init__.py" afterPath="$PROJECT_DIR$/jobonicusers/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicusers/apps.py" afterPath="$PROJECT_DIR$/jobonicusers/apps.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicusers/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/jobonicusers/migrations/0001_initial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicusers/models.py" afterPath="$PROJECT_DIR$/jobonicusers/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicusers/permissions.py" afterPath="$PROJECT_DIR$/jobonicusers/permissions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicusers/serializers.py" afterPath="$PROJECT_DIR$/jobonicusers/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicusers/urls.py" afterPath="$PROJECT_DIR$/jobonicusers/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobonicusers/views.py" afterPath="$PROJECT_DIR$/jobonicusers/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -138,7 +100,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jobonicEntity/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
@@ -146,6 +108,16 @@
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -179,7 +151,6 @@
         <option value="$PROJECT_DIR$/jobonicscompany/models.py" />
         <option value="$PROJECT_DIR$/runtime.txt" />
         <option value="$PROJECT_DIR$/jobonics/local_settings.py" />
-        <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/jobonicsapp/urls.py" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -216,6 +187,7 @@
         <option value="$PROJECT_DIR$/jobonicusers/models.py" />
         <option value="$PROJECT_DIR$/jobonicEntity/models.py" />
         <option value="$PROJECT_DIR$/jobonicEntity/serializers.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
       </list>
     </option>
   </component>
@@ -710,13 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -847,6 +812,14 @@
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
