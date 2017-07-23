@@ -54,14 +54,11 @@ class CompanySignupViewSet(viewsets.ViewSet):
         first_name = request.data['first_name']
         last_name = request.data['last_name']
         email = request.data['email']
-        phone = request.data['phone']
         company = request.data['comp_name']
-        website = request.data['website']
         password = request.data['password']
 
-        user = JobUser.objects.create_user(email=email, password=password, first_name=first_name, last_name=last_name,
-                                           phone=phone)
-        entity = Entity.objects.create(name=company, url=website, entity_admin=user)
+        user = JobUser.objects.create_user(email=email, password=password, first_name=first_name, last_name=last_name)
+        entity = Entity.objects.create(name=company, entity_admin=user)
         user.company = entity
         user.save()
         user = self.serializer_class(entity)
