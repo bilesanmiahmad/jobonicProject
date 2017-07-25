@@ -7,11 +7,13 @@ from . import views
 router = DefaultRouter()
 router.register('industries', views.IndustryViewSet)
 router.register('professions', views.ProfessionViewSet)
-router.register('jobtype', views.JobTypeViewSet)
+router.register('jobtypes', views.JobTypeViewSet)
 router.register('jobstatus', views.JobStatusViewSet)
 router.register('countries', views.CountryViewSet)
 router.register('entitysize', views.EntitySizeViewSet)
 router.register('appstages', views.ApplicationStageViewSet)
+router.register('careers-levels', views.CareerLevelViewSet)
+router.register('edu-levels', views.EducationLevelViewSet)
 urlpatterns = [
     # url(r'^industries/$', views.IndustryList.as_view()),
     # url(r'^industries/(?P<pk>[0-9]+)/$', views.IndustryDetail.as_view()),

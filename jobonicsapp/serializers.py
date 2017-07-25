@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Industry, Profession, JobType, JobStatus, Country, EntitySize, ApplicationStage, CareerLevel, EducationLevel
+from .models import Industry, Profession, JobType, JobStatus, Country, EntitySize, ApplicationStage, CareerLevel, EducationLevel, Source
 from jobonicusers.models import JobonicUser as User
 
 
@@ -63,6 +63,13 @@ class CareerLevelSerializer(serializers.ModelSerializer):
     class Meta:
         model = CareerLevel
         fields = ('id', 'name', 'description', 'date_created', 'created_by')
+        extra_kwargs = {'date_created': {'read_only': True}, 'created_by': {'read_only': True}}
+
+
+class SourceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Source
+        fields = ('id', 'name', 'date_created', 'created_by')
         extra_kwargs = {'date_created': {'read_only': True}, 'created_by': {'read_only': True}}
 
 

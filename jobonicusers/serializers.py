@@ -22,7 +22,7 @@ class LoginSerializer(serializers.Serializer):
                     msg = _('User account is disabled.')
                     raise serializers.ValidationError(msg, code='authorization')
             else:
-                msg = _('Unable to log in with providerdrr credentials.')
+                msg = _('Unable to log in with provided credentials.')
                 raise serializers.ValidationError(msg, code='authorization')
         else:
             msg = _('Must include "username" and "password".')
@@ -57,7 +57,7 @@ class LoginSerializer(serializers.Serializer):
 class JobonicJobUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = JobonicUser
-        fields = ('id', 'first_name', 'last_name', 'email', 'password', 'is_activated',
+        fields = ('id', 'first_name', 'last_name', 'email', 'password', 'is_activated', 'company', 'uuid_info',
                   'date_created', 'date_joined', 'is_active', 'is_staff')
         extra_kwargs = {'password': {'write_only': True}, 'is_active': {'read_only': True}, 'is_staff': {'read_only': True},
                         'uuid_info': {'read_only': True}, 'is_activated': {'read_only': True}}

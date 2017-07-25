@@ -1,7 +1,11 @@
+from rest_framework import generics, permissions, viewsets, filters, response, status
+from rest_framework.decorators import list_route
+
 from .models import Industry, Country, ApplicationStage, EntitySize, EducationLevel, CareerLevel, Profession, JobType, JobStatus
 from .serializers import IndustrySerializer, ProfessionSerializer, JobStatusSerializer, JobTypeSerializer, UserSerializer, CountrySerializer, ApplicationStageSerializer, EntitySizeSerializer, EducationLevelSerializer, CareerLevelSerializer
-from rest_framework import generics, permissions, viewsets, filters
+
 from jobonicusers.models import JobonicUser as User
+
 
 # Create your views here.
 
@@ -14,6 +18,15 @@ class IndustryViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
+
+    @list_route(methods=('get',), url_path="industries")
+    def list_industries(self, request):
+        industries = Industry.objects.all()
+        return response.Response({
+            "message": "Industries returned",
+            "status": status.HTTP_200_OK,
+            "payload": industries.data
+        })
 
 
 class ProfessionViewSet(viewsets.ModelViewSet):

@@ -141,6 +141,7 @@ class CareerLevel(models.Model):
 class Source(models.Model):
     name = models.CharField(max_length=30)
     date_created = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(JobonicUser)
 
     class Meta:
         verbose_name_plural = 'Sources'

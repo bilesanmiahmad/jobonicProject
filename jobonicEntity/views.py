@@ -1,9 +1,7 @@
 from rest_framework import generics, permissions, filters, viewsets, status, response
 from rest_framework.response import Response
 from rest_framework.decorators import list_route
-import sendgrid
 from rest_framework.permissions import AllowAny
-import requests
 
 from django.shortcuts import render
 from django.http.response import HttpResponse
@@ -34,18 +32,50 @@ class EntityProfileViewSet(viewsets.ModelViewSet):
     """Create, Read, Update and Delete entity profiles"""
     queryset = EntityProfile.objects.all()
     serializer_class = EntityProfileSerializer
-    permission_classes = permissions.AllowAny
 
 
-# class CompanyProfileViewSet(viewsets.ViewSet):
-#     serializer_class = EntityProfileSerializer
-#
-#     @list_route(methods=('post',), url_path="create-profile")
-#     def create_profile(self, request):
+class CompanyProfileViewSet(viewsets.ViewSet):
+    serializer_class = EntityProfileSerializer
+
+    @list_route(methods=('post',), url_path="create-profile")
+    def create_profile(self, request):
+        user = request.user.is_authenticated()
+        site_user = request.user
+        if user:
+            company = Entity.objects.filter(entity_admin=site_user)
+            if company is not None:
+                entity = company
+                logo = request.data['logo']
+                primary_industry = request.data['primary_industry']
+                about_company = request.data['about_company']
+                phone = request.data['phone']
+                facebook = request.data['facebook']
+                twitter = request.data['twitter']
+                linkedIn = request.data['linkedIn']
+                url = request.data['url']
+                date_established = request.data['date_established']
+                tags = request.data['tags']
+                location = request.data['location']
+                company_size = request.data['company_size']
+                country = request.data['country']
+                company_profile = EntityProfile.objects.create(entity=entity, logo=logo,
+                                                               primary_industry=primary_industry,
+                                                               about_company=about_company,
+                                                               phone=phone, facebook=facebook, twitter=twitter,
+                                                               linkedIn=linkedIn,
+                                                               url=url, date_established=date_established,
+                                                               tags=tags, location=location, company_size=company_size,
+                                                               country=country)
+                return response.Response({
+                    "message": "Profile created successfully",
+                    "status": status.HTTP_201_CREATED,
+                    "payload": company_profile.data
+                })
 
 
 class CompanySignupViewSet(viewsets.ViewSet):
     serializer_class = EntitySerializer
+
     # Create a new company profile -- https://jobonicplatform.com/api/company/comp/create
 
     @list_route(methods=('post',), url_path="create-account", permission_classes=[AllowAny])

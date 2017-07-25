@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate
+from django.views.decorators.csrf import csrf_exempt
 from django import core
 from django.http import Http404
 from rest_framework import status
@@ -35,7 +36,7 @@ class JobonicJobberViewSet(viewsets.ViewSet):
     # search_fields = ('first_name', 'last_name', 'email')
     # filter_backends = (filters.SearchFilter,)
 
-    @list_route(methods=('post',), url_path="create-user", permission_classes=[AllowAny])
+    @list_route(methods=('post',))
     def create_jobseeker(self, request):
         first_name = request.data['first_name']
         last_name = request.data['last_name']
@@ -57,6 +58,7 @@ class LoginViewSet(views.APIView):
     serializer_class = serializers.LoginSerializer
     permission_classes = (AllowAny,)
 
+    @list_route(methods=('post',))
     def post(self, request):
         """Use the ObtainAuth Token APIView to validate and create a token"""
         serializer = self.serializer_class(data=request.data)
@@ -82,7 +84,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = models.UserProfile.objects.all()
     permission_classes = (permissions.PostOwnProfile, IsAuthenticated,)
 
-    @list_route(methods=('POST',))
+    @list_route(methods=('POST',), url_path="user-profile")
     def create_profile(self, request):
         """Sets the user profile to the logged in user."""
         # serializer.save(user=self.request.user)
@@ -140,9 +142,9 @@ class UserProfileViewSet(viewsets.ModelViewSet):
             })
 
 
-class UserActivation(viewsets.ViewSet):
-    @list_route(methods=('post',))
-    def activate(self, request):
+class UserActivation(views.APIView):
+    permission_classes = (AllowAny,)
+    def post(self, request):
         try:
             uuid_key = request.data.get("uuid_key")
             user = models.JobonicUser.objects.get(uuid_info=uuid_key)
