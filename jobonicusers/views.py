@@ -144,6 +144,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 
 class UserActivation(views.APIView):
     permission_classes = (AllowAny,)
+
     def post(self, request):
         try:
             uuid_key = request.data.get("uuid_key")
@@ -155,6 +156,7 @@ class UserActivation(views.APIView):
             pass
         else:
             user.is_activated = True
+            user.save()
         return response.Response({
             "status_code": status.HTTP_200_OK,
             "user": user_serialized.data

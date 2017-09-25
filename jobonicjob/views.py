@@ -22,6 +22,7 @@ class JobViewSet(viewsets.ModelViewSet):
         serializer.data['is_published'] = True
         return Response(serializer.data)
 
+    @list_route(methods=['post'])
     def create_job(self, request):
         user = request.user.isAuthenticated
         site_user = request.user
@@ -57,4 +58,16 @@ class JobViewSet(viewsets.ModelViewSet):
             })
 
 
+
+    def show_jobs(self, request, company_id):
+        user = request.user.isAuthenticated
+        site_user = request.user
+        if user:
+            jobs = Job.objects.all().filter(entity=company_id)
+            jobs = this.serializer_class(jobs)
+            return Response({
+                "status_code": status.HTTP_200_OK,
+                "message": "jobs returned successfully"
+                "payload": jobs.data
+                })
 
